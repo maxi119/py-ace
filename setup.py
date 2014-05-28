@@ -5,7 +5,7 @@ import couchbase
 
 setup(
       name="py-ace",
-      version= '0.0.1',
+      version= '0.0.2',
       description="make all python script as c extention with cython",
       long_description=open("README.txt.en").read(),
       author="MaxiL",

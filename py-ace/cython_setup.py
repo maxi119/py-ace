@@ -178,3 +178,19 @@ def os_setup():
             dm9.get_build_version = lambda : 10.0
 
 
+def make_ace( project_info, svn ):
+    outfile = project_info.output
+    org_dir = None
+    project_info.output = os.path.join( os.getcwd(), outfile )
+    if project_info.work_dir and project_info.work_dir != "": 
+        org_dir = os.getcwd()
+        os.chdir( project_info.work_dir )
+    prepare_cleanup( project_info, svn )
+    make_library( project_info )
+    post_cleanup( project_info )
+    pack_all( project_info )
+
+    if org_dir != None:
+        os.chdir( org_dir )
+            
+            

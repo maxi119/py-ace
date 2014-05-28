@@ -22,7 +22,7 @@ Struct svn
 
 Example
 ----
-	from py-ace import *
+	from py-ace import make_ace
 	import collections
 	SVN_INFO = collections.namedtuple( 'SVN_INFO', [ 'user', 'password', 'revision'] )
 
@@ -56,14 +56,7 @@ Example
 
 
 		for p in Projects:
-			outfile = p.output
-			p.output = os.path.join( os.getcwd(), outfile )
-			if p.work_dir and p.work_dir != "": 
-				os.chdir( p.work_dir )
-			prepare_cleanup( p, svn )
-			make_library( p )
-			post_cleanup( p )
-			pack_all( p )
+			make_ace( p, svn )
 
 
 
