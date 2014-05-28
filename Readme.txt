@@ -31,9 +31,6 @@ cython 可以混合使用 python 語法和 cython 語法
 http://blog.csdn.net/gzlaiyonghao/article/details/4561611
 
 
-0.	將 cython_setup.py 和 build_config.py 放在 專案下
-
-
 1.	在 Windows 中如果有安裝 MSVC 2008 以外的版本
 	要先準備好開發環境
 	例如：
@@ -42,10 +39,6 @@ http://blog.csdn.net/gzlaiyonghao/article/details/4561611
 	set DISTUTILS_USE_SDK=1
 	set MSSdk=1
 
-2.	設定 build_config.py
-
-
-
-3.	執行 python cython_setup.py build_ext --inplace
+2.	執行 python cython_setup.py build_ext --inplace
 	沒有錯誤的話會產生一個 zip 
 

@@ -1,0 +1,20 @@
+﻿
+Make all python script as c extention
+
+1. Some error will be detected
+  ex.
+     undefined variable
+
+2. Can't use __file__ in script
+
+3. Can't mix tab and space in the same file
+
+4. Take more than 5 minutes to convert
+
+5. If use MSVC 2010 need prepare SDK eviroment
+
+	"%VS100COMNTOOLS%vsvars32.bat"
+	set DISTUTILS_USE_SDK=1
+	set MSSdk=1
+
+
