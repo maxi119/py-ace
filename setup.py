@@ -23,7 +23,8 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Python Software Foundation License",
         "Programming Language :: Python",
-        "Topic :: Cython",
+        "Topic :: Utilities",
+        "Topic :: Security",        
         "Topic :: Software Development :: Libraries :: Python Modules",
         ])
 
