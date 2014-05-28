@@ -1,0 +1,3 @@
+"%VS100COMNTOOLS%vsvars32.bat"
+set DISTUTILS_USE_SDK=1
+set MSSdk=1
