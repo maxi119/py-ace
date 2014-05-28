@@ -3,6 +3,9 @@ Make all python script as c extentions
 ====
 
 Config with a list with struct
+
+Struct Project
+----
 	Projects
 		work_dir		switch to the folder as working directory
 		target			the target folder
@@ -10,6 +13,12 @@ Config with a list with struct
 		keep_source		keep .py inside
 		exclude			remove the file inside  the folder.
 
+Struct svn
+----
+	svn
+		user
+		password
+		
 
 Example
 ----
