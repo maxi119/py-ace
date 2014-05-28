@@ -20,21 +20,16 @@ Struct svn
 		password
 		
 
-Example
+Example.py
 ----
-	from py-ace import make_ace
 	import collections
-	SVN_INFO = collections.namedtuple( 'SVN_INFO', [ 'user', 'password', 'revision'] )
+	from pyace import make_ace, SvnInfo, ProjectInfo
 
-	class Struct(object):
-		def __init__(self, **param ):
-			self.__dict__.update(param)
-
-	svn = SVN_INFO (  user = 'user', password = 'password', revision = -1 )
+	svn = SvnInfo (  user = 'user', password = 'password' )
 
 	Projects = [
-		Struct( **dict (
-			work_dir = '../MyProject',
+		ProjectInfo( **dict (
+			work_dir = '../Server',
 			target = 'Game',
 			output = 'output/game.zip',
 			keep_source = [
@@ -48,15 +43,15 @@ Example
 			)) ,
 		]        
 
-
-
-
-
 	if __name__ == '__main__':
-
 
 		for p in Projects:
 			make_ace( p, svn )
 
-
-
+		
+Execute
+----
+	python Example.py build_ext --inplace
+	
+	Finally, get output/game.zip
+	

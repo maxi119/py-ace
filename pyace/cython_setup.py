@@ -99,7 +99,7 @@ def make_library( project ):
     #extensions += _make_extentions( ["utility"], 'pyx' )
     ex_module = cythonize( extensions )
     setup(
-	    name = 'game-server',
+	    name = 'ace-package',
 	    ext_modules = ex_module
 	    #ext_modules = cythonize( 'utility/*.py', exclude=['__init__.*'] ),
 	    )

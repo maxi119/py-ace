@@ -1,16 +1,10 @@
 import collections
-from py-ace import make_ace
+from pyace import make_ace, SvnInfo, ProjectInfo
 
-SVN_INFO = collections.namedtuple( 'SVN_INFO', [ 'user', 'password', 'revision'] )
-
-class Struct(object):
-    def __init__(self, **param ):
-        self.__dict__.update(param)
-
-svn = SVN_INFO (  user = 'user', password = 'password', revision = -1 )
+svn = SvnInfo (  user = 'user', password = 'password' )
 
 Projects = [
-    Struct( **dict (
+    ProjectInfo( **dict (
         work_dir = '../Server',
         target = 'Game',
         output = 'output/game.zip',
