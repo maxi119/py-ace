@@ -7,7 +7,7 @@ setup(
       name="py-ace",
       version= '0.0.3',
       description="make all python script as c extention with cython",
-      long_description=open("README.txt.en").read(),
+      long_description=open("README.txt").read(),
       author="MaxiL",
       author_email="maxil@interserv.com.tw",
       maintainer="MaxiL",
