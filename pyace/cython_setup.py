@@ -113,11 +113,12 @@ def _remove_files( path, pattern ):
 
 
 
-def prepare_cleanup( project, svn ):
+def prepare_cleanup( project, svn, bakcupPath ):
     # svn = build_config.svn
     # restore
-    print('Restore all')
-    os.system('svn update %s --username %s --password %s --no-auth-cache'%( project.target, svn.user, svn.password ) )
+    if svn != None:
+        print('Restore all')
+        os.system('svn update %s --username %s --password %s --no-auth-cache'%( project.target, svn.user, svn.password ) )
     # clear pyc
     print('Remove pyc, pyd')
     _remove_files( project.target, "*.pyc" )
@@ -135,20 +136,21 @@ def prepare_cleanup( project, svn ):
 
     for e in project.keep_source:
         try:
-            os.remove( e )
+            os.remove( e )            
         except Exception as e:
             pass
     
 
-def post_cleanup( project ):
+def post_cleanup( project, useSVN ):
     print('clean up py.')
     _remove_files( project.target, "*.py" )
     _remove_files( project.target, "*.c" )
     _remove_files( project.target, "*.obj" )
     _remove_files( project.target, "*.lib" )
     _remove_files( project.target, "*.exp" )
-    for f in project.keep_source:
-        os.system( "svn revert %s" % f )
+    if useSVN:
+        for f in project.keep_source:
+            os.system( "svn revert %s" % f )
 
 def zipdir( path, zfile ):
     for root, dirs, files, in os.walk(path):
@@ -178,16 +180,16 @@ def os_setup():
             dm9.get_build_version = lambda : 10.0
 
 
-def make_ace( project_info, svn ):
+def make_ace( project_info, svn = None):
     outfile = project_info.output
     org_dir = None
     project_info.output = os.path.join( os.getcwd(), outfile )
     if project_info.work_dir and project_info.work_dir != "": 
         org_dir = os.getcwd()
         os.chdir( project_info.work_dir )
-    prepare_cleanup( project_info, svn )
+    prepare_cleanup( project_info, svn, org_dir )
     make_library( project_info )
-    post_cleanup( project_info )
+    post_cleanup( project_info, useSVN = (svn!=None) )
     pack_all( project_info )
 
     if org_dir != None:
